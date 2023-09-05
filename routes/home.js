@@ -22,6 +22,16 @@ router.get('/blogs/create', (req, res) => {
     res.render('createBlog', {title: 'New Blog'})
 })
 
+router.get('/blogs/:id', (req, res) => {
+    const id = req.params.id
+
+    Blog.findById(id)
+        .then(result => {
+            res.render('singleBlog', {title: result.title, blog: result})
+        })
+        .catch(err => console.log(err))
+})
+
 // POST requests
 router.post('/blogs', (req, res) => {
     const blog = new Blog(req.body)

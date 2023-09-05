@@ -5,6 +5,12 @@ const mongoose = require('mongoose')
 
 const app = express()
 
+// const getIp = (req, res, next) => {
+//     const ipAddress = req.socket.remoteAddress;
+//     console.log(ipAddress)
+//     next()
+// }
+
 // middleware
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -23,6 +29,6 @@ mongoose.connect(process.env.dbURI)
 // routes
 app.use('/', require('./routes/home'))
 
-app.use('*', (req, res) => {
-    res.status(404).render('404')
+app.use((req, res) => {
+    res.status(404).render('404', {title: '404'})
 })
