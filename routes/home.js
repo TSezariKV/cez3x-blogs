@@ -5,7 +5,10 @@ const router = express.Router()
 
 // GET requests
 router.get('/', (req, res) => {
-    res.render('index', {title: 'Home'})
+    Blog.find().sort({createdAt: -1})
+        .then(result => {
+            res.render('index', {title: 'Home', blogs: result})
+        })
 })
 
 router.get('/blogs', (req, res) => {

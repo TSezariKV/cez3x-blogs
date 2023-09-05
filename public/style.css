@@ -1,14 +1,13 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
-.nav-container .logo {
+nav .logo {
     font-size: 30px;
-    cursor: pointer;
-}
-.nav-container .logo a {
     text-decoration: none;
     color: #111;
+    cursor: pointer;
 }
 .nav-container {
     width: 80%;
@@ -62,19 +61,9 @@ form button {
     cursor: pointer;
 }
 
-.blogs {
-    width: 80%;
-    margin: 100px auto;
+.h1-text {
+    margin-bottom: 50px;
 }
-.blog {
-    padding-left: 20px;
-    border-left: 6px solid crimson;
+.card {
     margin-bottom: 40px;
-}
-.blog-title {
-    font-size: 25px;
-}
-.blog-body {
-    color: #222;
-    width: 500px;
 }
