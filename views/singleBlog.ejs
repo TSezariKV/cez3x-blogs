@@ -12,8 +12,24 @@
                 <h5 class="card-title"><%= blog.title %></h5>
                 <p class="card-text"><%= blog.body %></p>
                 <a href="/blogs" class="btn btn-primary">Go Back</a>
+                <button id="del-btn" class="btn btn-danger del-btn" data-doc="<%= blog.id %>">Delete</button>
             </div>
         </div>
     </div>
+
+    <script>
+        const deleteButton = document.getElementById('del-btn')
+
+        deleteButton.addEventListener('click', (e) => {
+            const blogId = deleteButton.dataset.doc
+
+            fetch(blogId, {
+                method: 'DELETE'
+            })
+            .then(result => result.json())
+            .then(data => location.href = data.redirect)
+            .catch(err => console.log(err))
+        })
+    </script>
 </body>
 </html>

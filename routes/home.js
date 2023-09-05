@@ -44,4 +44,15 @@ router.post('/blogs', (req, res) => {
         .catch(err => console.log(err))
 })
 
+// DELETE requests
+router.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id
+
+    Blog.findByIdAndDelete(id)
+        .then(() => {
+            res.json({redirect: '/blogs'})
+        })
+        .catch(err => console.log(err))
+})
+
 module.exports = router
